@@ -2,26 +2,21 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Checkout Code') {
             steps {
-                // Get some code from a GitHub repository
-                git 'https://github.com/Pulkit-CountryDelight/test.git'
-
-                // Run Maven on a Unix agent.
-            //    sh "mvn -Dmaven.test.failure.ignore=true clean package"
-
-                // To run Maven on a Windows agent, use
-                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
+                git branch: 'main', 
+                    url: 'https://github.com/Pulkit-CountryDelight/test.git', 
+                    credentialsId: 'GitHub_Pass'
             }
-
-      //  stage('Push to Server')
-      //      steps {
-      //           sh ""
-            
-        //    }
-            
-            
-          
         }
+
+      //  stage('Build') {
+      //      steps {
+      //          echo 'Building the project...'
+      //          sh ""
+      //      }
+      //  }
+
+    
     }
 }
